@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import {Media} from 'reactstrap';
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap';
+import Detail from "./DishDetailComponent";
 
 class Menu extends Component {
 
@@ -9,7 +10,7 @@ class Menu extends Component {
 
         this.state = {
             selectedDish : null
-        }
+        };
 
     }
 
@@ -18,7 +19,7 @@ class Menu extends Component {
     }
 
     renderDish(dish){
-        if (dish != null){
+        if (dish != null){ /*
             return (
                 <Card>
                     <CardImg width='100%' object src={dish.image} alt={dish.name} />
@@ -28,6 +29,8 @@ class Menu extends Component {
                     </CardBody>
                 </Card>
             );    
+            */ 
+            return <Detail dish={dish} />
         }
         else {
             return(
@@ -40,11 +43,12 @@ class Menu extends Component {
 
         const menu = this.props.dishes.map((dish) => {
             return (
-                <div key={dish.id} className="col-12 col-md-5 mt-1">
-                    <Card onClick={() => this.onDishSelect(dish)}>
-                    
-                            <CardImg width='100%' object src={dish.image} alt={dish.name} />
-                  
+                <div className="col-12 col-md-5 m-1">
+                    <Card key={dish.id}
+                    onClick={() => this.onDishSelect(dish)}>
+                        <Card>
+                            <CardImg width='100%' src={dish.image} alt={dish.name} />
+                        </Card>
                         <CardImgOverlay>
                             <CardTitle>{dish.name}</CardTitle>
                         
@@ -62,7 +66,9 @@ class Menu extends Component {
                
                 </div>       
                 <div className="row">
-                    {this.renderDish(this.state.selectedDish)}
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderDish(this.state.selectedDish)}
+                    </div>
                 </div>
                 
             </div>                
