@@ -8,6 +8,7 @@ import {COMMENTS } from '../shared/comments';
 import {LEADERS} from '../shared/leaders';
 import {PROMOTIONS} from '../shared/promotions';
 import Contact from './ContactComponent';
+import About from './AboutComponent';
 import Home from './HomeComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -47,11 +48,18 @@ class Main extends Component {
         );
     }
 
+    const AboutUs = () => {
+       return (
+            <About leaders = {this.state.leaders}/>
+        );
+    }
+
     return (
       <div >
         <Header />
         <Switch>
             <Route path="/home" component={HomePage} />
+            <Route exact path="/aboutus" component={AboutUs} />
             <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes}/>} />
             <Route path="/menu/:dishId" component={DishWithId} />
             <Route exact path="/contactus" component={Contact} />

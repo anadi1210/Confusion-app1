@@ -19,7 +19,7 @@ import {Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem} fr
         const Menu = (props) => {
             const menu = props.dishes.map((dish) => {
                 return (
-                    <div  key={dish.id} className="col-12 col-md-5 m-1">
+                    <div  key={dish.id} className="col-12 col-md-6">
                         <RenderMenuItem dish={dish}  />
                     </div>
                 );
